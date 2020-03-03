@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/get-by-city/{city}', 'MusicalWeatherController@getTracksByCity');
+Route::get('/get-by-coords/{lat}/{lon}', 'MusicalWeatherController@getTracksByCoords');

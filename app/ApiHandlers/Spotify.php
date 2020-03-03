@@ -5,7 +5,7 @@ namespace App\ApiHandlers;
 class Spotify
 {
 
-    public function getPlaylistsByGenre($genre) : string
+    public function getPlaylistsByGenre(String $genre) : string
     {
 
         $playlistsCount = 5;
@@ -37,7 +37,7 @@ class Spotify
 
     }
 
-    public function getTracksByPlaylistId($playlistId)
+    public function getTracksByPlaylistId(String $playlistId)
     {
 
         $curl = curl_init();
@@ -77,7 +77,7 @@ class Spotify
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/x-www-form-urlencoded",
                 "Accept: application/json",
-                "Authorization: Basic NDcwODQ4MTQ5ZDMyNDMyN2IzNzI3MWViZmVhM2MzNTg6NTljODFmYjkzZjE0NDNkZWFkNDUyYzAyOWM5NjY2MGY="
+                "Authorization: Basic " . env('SPOTIFY_AUTH_TOKEN')
             ),
             CURLOPT_POSTFIELDS => "grant_type=client_credentials"
         ));
