@@ -1,0 +1,17 @@
+image:
+  file: .gitpod.dockerfile
+ports:
+  - port: 8000
+    onOpen: open-preview
+
+  - port: 33060
+    onOpen: ignore
+
+tasks:
+  - name: fooApp
+    init: >
+        composer install
+    command: >
+        cp .env.example .env;
+        php artisan key:generate;
+        php artisan serve;
